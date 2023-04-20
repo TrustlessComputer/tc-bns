@@ -41,6 +41,7 @@ func (gw *Gateway) Start() error {
 	apiv1.GET("/names/:address", cache.CacheByRequestURI(cacheStore, 5*time.Second), gw.GetAddressNames)
 	apiv1.GET("/names", cache.CacheByRequestURI(cacheStore, 1*time.Second), gw.GetNames)
 	apiv1.GET("/available/:name", cache.CacheByRequestURI(cacheStore, 1*time.Second), gw.CheckNameAvailable)
+	apiv1.GET("/token/:tokenid", cache.CacheByRequestURI(cacheStore, 1*time.Second), gw.GetNameByTokenID)
 
 	err := r.Run("0.0.0.0:" + gw.Port)
 	if err != nil {

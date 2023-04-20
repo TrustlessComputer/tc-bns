@@ -97,3 +97,20 @@ func (gw *Gateway) GetName(ctx *gin.Context) {
 	result.RegisteredAtBlock = nameInfo.RegisteredAtBlock
 	wrapHTTPRespond(ctx, result, err)
 }
+
+func (gw *Gateway) GetNameByTokenID(ctx *gin.Context) {
+	tokenID := ctx.Param("tokenid")
+
+	nameInfo, err := gw.Storage.GetNameInfoByID(tokenID)
+
+	if err != nil {
+		wrapHTTPRespond(ctx, nil, err)
+		return
+	}
+	result := respond.NameInfo{}
+	result.Name = nameInfo.Name
+	result.Owner = nameInfo.Owner
+	result.ID = nameInfo.ID
+	result.RegisteredAtBlock = nameInfo.RegisteredAtBlock
+	wrapHTTPRespond(ctx, result, err)
+}
