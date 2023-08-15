@@ -6,10 +6,10 @@ on:
       - develop
 
 jobs:
-  build-bns-develop:
+  build-bns-gateway-develop:
     uses: TrustlessComputer-DevOps/tc-github-action-templates/.github/workflows/docker-build-and-push.yaml@main
     with:
-      DOCKER_IMAGE_NAME: bns
+      DOCKER_IMAGE_NAME: bns-gateway
       DOCKERFILE_NAME: Dockerfile
       CONCURRENCY_GROUP: docker_build_develop
     secrets:

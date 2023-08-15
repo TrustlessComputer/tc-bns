@@ -5,10 +5,10 @@ on:
     tags:
       - 'v*'
 jobs:
-  build-bns-production:
+  build-bns-gateway-production:
     uses: TrustlessComputer-DevOps/tc-github-action-templates/.github/workflows/docker-build-and-push.yaml@main
     with:
-      DOCKER_IMAGE_NAME: bns
+      DOCKER_IMAGE_NAME: bns-gateway
       DOCKERFILE_NAME: Dockerfile
       CONCURRENCY_GROUP: docker_build_production
     secrets:
