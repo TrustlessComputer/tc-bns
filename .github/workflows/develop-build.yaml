@@ -1,0 +1,16 @@
+name: Docker develop build
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-bns-develop:
+    uses: TrustlessComputer-DevOps/tc-github-action-templates/.github/workflows/docker-build-and-push.yaml@main
+    with:
+      DOCKER_IMAGE_NAME: bns
+      DOCKERFILE_NAME: Dockerfile
+      CONCURRENCY_GROUP: docker_build_develop
+    secrets:
+      GCLOUD_DEV_SERVICE_ACCOUNT_JSON: ${{ secrets.GCLOUD_DEV_SERVICE_ACCOUNT_JSON }}
